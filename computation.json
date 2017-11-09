@@ -1,26 +1,18 @@
 {
+  "id": "mriqc-01",
   "meta": {
-    "name": "VBM",
+    "name": "mri-quality-control",
     "version":  "v1.0",
-    "repository": "github.com/MRN-Code/Coinstac_VBM_computation",
-    "description": "This algorithm runs Voxel Based Morphometry on structural T1 weighted MRI scans(BIDS format) using SPMv12 standalone and MATLAB Runtimev713. Each scan takes approximately 10 mins to run on a system with 2.3 GHz,i5 equivalent processor, 8GB RAM. Each scan output directory takes about 150MB space after running this algorithm. Please make sure to have the space and resources to run this algorithm accordingly.",
-    "tags": ["vbm", "preprocess"], 
+    "repository": "github.com/MRN-Code/coinstac_mriqc_computation.git",
+    "description": "This computation run mriqc tool on smri, fmri bids datasets to create quality control visual reports, which helps to identify outlier subjects in the data.",
+    "tags": ["quality-control", "preprocess"], 
     "preprocess": true
   },
   "computation": {
     "type": "docker",
-    "dockerImage": "spanta28/coinstac:vbm_computation",
-    "command": ["python3", "/root/vbm_scripts/run_vbm_bids.py"],
+    "dockerImage": "poldracklab/mriqc",
+    "command": ["docker", "run -it --rm -v inputBidsDir:/data:ro -v tempWriteDir:/out poldracklab/mriqc:latest /data /out participant -m bold --verbose-reports"],
     "input": {
-      "SmoothingValue":{
-        "label": "Smoothing kernel value(mm)",
-        "min": 3,
-        "max": 3,
-        "type": "array",
-        "items": "number",
-        "defaultValue": [10, 10, 10],
-        "description": "This is optional setting. Enter the full-width at half maximum (FWHM) of the Gaussian smoothing kernel in mm, Three values should be entered, denoting the FWHM in the x,y and z directions. Default:[10 10 10]. For best results , give a kernel in the range [6 6 6] - [ 10 10 10 ]." 
-      },
       "inputBidsDir": {
         "type": "directory",
         "label": "Input Bids Directory",
@@ -29,11 +21,24 @@
         "type": "directory",
         "label": "Directory to save outputs",
       } 
+    },    
+    display: [
+    {
+      type: “box_plot”,
+      label: “”,
+      x_labels: [“fwhm_x”, “fwhm_y”, “fwhm_z”],
+      x: [“fwhm_x”, “fwhm_y”, “fwhm_z”],
+      y_labels: [“FWHM(mm)”],
+      y: []
     },
-    "output": {
-      "success": {
-        "type": "boolean"
-      }
+    {
+      type: “box_plot”,
+      label: “”,
+      x_labels: [“efc”],
+      x: [“efc”],
+      y_labels: [“EFC”],
+      y: []
     }
+  ] 
   }
 }

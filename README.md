@@ -6,6 +6,7 @@ The computation runs serially and each scan takes approximately 10 mins to run o
 Example run below:
 
 docker run -it --rm -v /Users/Downloads/ds003/:/data:ro -v /Users/Downloads/bids_mriqc:/out poldracklab/mriqc:latest /data /out participant -m bold --verbose-reports
+
 docker run -it --rm -v /Users/spanta/Downloads/ds003/:/data:ro -v /Users/spanta/Downloads/bids_mriqc:/out poldracklab/mriqc:latest /data /out participant -m group --verbose-reports
 
 After the computation finishes , the docker will exit.

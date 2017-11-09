@@ -8,8 +8,10 @@ Atleast 5GB of RAM should be dedicated for this docker. Please make sure to have
 
 Example run below:
 
-docker run -it --rm -v /Users/Downloads/ds003/:/data:ro -v /Users/Downloads/bids_mriqc:/out poldracklab/mriqc:latest /data /out participant -m bold --verbose-reports
+On the host machine after the docker service is started , the foll. commands are run from the terminal:
 
-docker run -it --rm -v /Users/spanta/Downloads/ds003/:/data:ro -v /Users/spanta/Downloads/bids_mriqc:/out poldracklab/mriqc:latest /data /out participant -m group --verbose-reports
+docker run -it --rm -v inputBidsDir:/data:ro -v tempWriteDir:/out poldracklab/mriqc:latest /data /out participant -m bold --verbose-reports
+
+docker run -it --rm -v inputBidsDir:/data:ro -v tempWriteDir:/out poldracklab/mriqc:latest /data /out participant -m group --verbose-reports
 
 After the computation finishes , the docker will exit.

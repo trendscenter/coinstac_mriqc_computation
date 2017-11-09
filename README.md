@@ -1,4 +1,4 @@
-coinstac_mriqc_computation
+#coinstac_mriqc_computation
 This computation run mriqc tool(developed by poldracklab) on smri, fmri bids datasets to create quality control visual reports, which helps to identify outlier subjects in the data. 
 
 The computation runs serially and each scan takes approximately 10 mins to run on a system with 2.3 GHz,i5 equivalent processor and 8GB RAM. Each scan output directory takes about 15MB space after running this computation. 

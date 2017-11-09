@@ -22,21 +22,21 @@
         "label": "Directory to save outputs",
       } 
     },    
-    "display": [
+    display: [
     {
-      type: “box_plot”,
-      label: “”,
-      x_labels: [“fwhm_x”, “fwhm_y”, “fwhm_z”],
-      x: [“fwhm_x”, “fwhm_y”, “fwhm_z”],
-      y_labels: [“FWHM(mm)”],
+      type: "box_plot",
+      label: "",
+      x_labels: ["fwhm_x", "fwhm_y", "fwhm_z"],
+      x: ["fwhm_x", "fwhm_y", "fwhm_z"],
+      y_labels: ["FWHM(mm)"],
       y: []
     },
     {
-      type: “box_plot”,
-      label: “”,
-      x_labels: [“efc”],
-      x: [“efc”],
-      y_labels: [“EFC”],
+      type: "box_plot",
+      label: "",
+      x_labels: ["efc"],
+      x: ["efc"],
+      y_labels: ["EFC"],
       y: []
     }
   ] 

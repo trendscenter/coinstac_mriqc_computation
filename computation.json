@@ -22,7 +22,7 @@
         "label": "Directory to save outputs",
       } 
     },    
-    display: [
+    "display": [
     {
       type: “box_plot”,
       label: “”,
